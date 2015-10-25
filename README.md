@@ -43,6 +43,8 @@ open index.html
 Three files are required to run: a configuration file, a video inventory, and a clip inventory. These files all need to
 reside in the same directory as the code.
 
+#### zclipsy.yaml
+
 The main configuration file is named `zclipsy.yaml`. You can edit it with your favorite text editor application. The
 following properties can be configured using standard `property: value` YAML syntax.
 
@@ -52,26 +54,30 @@ following properties can be configured using standard `property: value` YAML syn
 * **speed** - Optional speed scaling factor. For example, you can set this to 2 if your videos were filmed at half-speed
 or 4 for quarter-speed. Default: 1
 
+#### Video inventory
+
 The video inventory file should contain one or more lines in this format:
 
 ```
-NAME DATE YOUTUBE_ID LENGTH
+VIDEO_NAME DATE YOUTUBE_ID LENGTH
 ```
 
-* **NAME** - Short name for the video, for example `Res-96`. Cannot contain spaces, must be different for each video.
+* **VIDEO_NAME** - Short name for the video, for example `Res-96`. Cannot contain spaces, must be different for each video.
 * **DATE** - Video date in `MonYYYY` format, for example `Oct2015`. Tagged to each clip in the video so you can search
 for it.
 * **YOUTUBE_ID** - Unique YouTube video identifier, for example `Jjxg6kxJ62Y`.
 * **LENGTH** - Video length in `mm:ss` format, for example `5:34`. Currently only videos less than 1 hour in length are
 supported.
 
+#### Clip inventory
+
 The clip inventory file should contain one or more lines in this format:
 
 ```
-NAME START_TIME DESCRIPTION
+VIDEO_NAME START_TIME DESCRIPTION
 ```
 
-* **NAME** - Short name of the video containing the clip as listed in the video inventory file.
+* **VIDEO_NAME** - Short name of the video containing the clip as listed in the video inventory file.
 * **START_TIME** - Clip's start time in `mm:ss` format. All clips in a video must be on consecutive lines and listed
 sequentially in ascending order. Must be less than the video length as declared in the video inventory file.
 * **DESCRIPTION** - Text description of the clip. May contain spaces, a tag/label system works well.
@@ -87,7 +93,7 @@ for an HTML table of clips.
 
 [jQuery](https://jquery.com/) is also used for some functionality.
 
-### Video playback
+#### Video playback
 
 The [YouTube API](https://developers.google.com/youtube/v3/) is used to play a segment of a video in a repeating loop. The clip
 can be played at regular speed, half-speed, or quarter-speed. Internet connectivity is required in order to play clips.
@@ -95,19 +101,19 @@ can be played at regular speed, half-speed, or quarter-speed. Internet connectiv
 The privacy setting for the YouTube videos can be public, unlisted, or private. However, in order to play private videos,
 you'll need to be the video owner and logged in to your YouTube account.
 
-### Searching
+#### Searching
 
 When you enter one or more search terms separated by spaces, the clip table updates itself dynamically as each letter
 is typed, filtering out clips that do not match all of the criteria. Some minor enhancements were made to the List.js
 search syntax, in particular searching across all columns and support for negation by prefixing a search term with
 `-` (for exampe `-shiny`), which excludes any matching clip.
 
-### Sorting
+#### Sorting
 
 You can sort the clips by description or duration in ascending or descending order, while also retaining any search
 filter.
 
-### Pagination
+#### Pagination
 
 20 clips are displayed per page (to change that, you can edit the `clipsPerPage` variable value in `pagify.js`). The
 current page is highlighted in `[]`. The first, last, and -2 to +2 pages can be navigated to by clicking the page
@@ -117,12 +123,12 @@ number link. Updating the search filter resets the clip table to the first page 
 
 A number of deployment options are possible.
 
-### Local
+#### Local
 
 You can view the site on your local machine by opening the `index.html` file in a web browser. Of course, you'll still
 need internet connectivity in order to play the videos that are hosted on YouTube's servers. 
 
-### Deep Web
+#### Deep Web
 
 I use [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web]
 (https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
@@ -133,7 +139,7 @@ folder. Whenever the files are updated, they are immediately synced to the Dropb
 Besides Dropbox other Deep Web options might include [JSFiddle](https://jsfiddle.net/) and [Google Drive]
 (https://www.google.com/drive/).
 
-### Public Internet
+#### Public Internet
 
 If you have your own website, you can just upload the files. Make sure to upload `index.html`, `style.css`, and all
 of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the content could be
@@ -144,7 +150,7 @@ discoverable.
 
 The process for updating your clip catalog site is fairly straightforward.
 
-1. Upload any new video(s) to YouTube as necessary
+1. Upload any new video(s) to YouTube as necessary.
 2. Edit the video inventory file as necessary.
 3. Edit the clip inventory file as necessary.
 4. Run the `zclipsy` script.

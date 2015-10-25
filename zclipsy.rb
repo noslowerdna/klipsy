@@ -8,10 +8,6 @@ def getStartTime(line)
   line.split(' ')[1]
 end
 
-def getVideoIdAndStartTime(line)
-  getVideoId(line) + ' ' + getStartTime(line)
-end
-
 def getDescrip(line)
   line.split(' ', 3)[2].strip
 end
@@ -104,9 +100,10 @@ lines.each_with_index do |line, i|
   slowDuration = getTimeString(slowDurationSecs)
   superSlowDuration = getTimeString(superSlowDurationSecs)
   fastDuration = getTimeString(fastDurationSecs)
-  fastLink = line.split(' ')[0].sub(':', '-') + '-'
-  slowLink = line.split(' ')[0].sub(':', '-') + '--'
-  superSlowLink = line.split(' ')[0].sub(':', '-') + '---'
+  baseLink = id + '-' + startTime.sub(':', '-')
+  fastLink = baseLink + '-'
+  slowLink = baseLink + '--'
+  superSlowLink = baseLink + '---'
 
   highlightCurrentlyPlaying = 'var e = document.getElementById(cp); if (e != null) e.className = "np"; ' +
     'cp = "tr' + (i + 1).to_s + '"; document.getElementById(cp).className = "p"; '
