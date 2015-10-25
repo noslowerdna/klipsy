@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+            <title>PAGE_TITLE</title>
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <script type='text/javascript' src='jquery-2.1.0.js'></script>
+    </head>
+    <body>
+        <div class="viddiv-cont">
+            <div class="viddiv">
+                <span class="preplayer"></span>
+                <div id="player"></div>
+                <span class="postplayer"></span>
+            </div>
+        </div>
+        <div class="tablediv" id="clips">
+            <input class="search" id="searchbox" placeholder="Search" autofocus/>&nbsp;&nbsp;
+            <button class="sort" data-sort="descrip">Sort by description</button>&nbsp;&nbsp;
+            <button class="sort" data-sort="duration">Sort by duration</button>&nbsp;&nbsp;
+            <a id="unpage" href="#">Unpaginate</a>&nbsp;&nbsp;
+            <a id="isolate" href="#">Isolate</a>
+            <br/></br/>
+            <table id="headers">
+                <tr style="background-color:#eeeeff;"><td>video</td><td>start</td><td style="width:75px;">links</td><td style="width:75px;">&nbsp;</td><td style="width:75px;">&nbsp;</td><td style="width:800px;">description</td></tr>
+            </table>
+            <table id="table">
+                <tbody class="list">

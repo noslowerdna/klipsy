@@ -1,0 +1,39 @@
+V1 0:00 short vowel words intro
+V1 0:07 wag
+V1 0:14 hat
+V1 0:21 bus
+V1 0:28 got
+V1 0:35 bed
+
+V2 0:00 sight words first grade intro
+V2 0:07 a
+V2 0:14 I
+V2 0:21 is
+V2 0:28 on
+V2 0:35 the
+
+V3 0:00 kindergarten sight words intro
+V3 0:17 a
+V3 0:20 from
+V3 0:23 and
+V3 0:27 have
+V3 0:30 he
+V3 0:33 be
+V3 0:36 I
+V3 0:39 his
+V3 0:43 in
+V3 0:46 with
+V3 0:49 is
+V3 0:52 as
+V3 0:56 it
+V3 0:59 are
+V3 1:02 of
+V3 1:05 for
+V3 1:08 that
+V3 1:12 go
+V3 1:15 the
+V3 1:18 up
+V3 1:21 to
+V3 1:25 here
+V3 1:28 was my you me am like come this see look we on at
+V3 2:10 kindergarten sight words credits
