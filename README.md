@@ -9,12 +9,18 @@ catalog is paginated, searchable, and sortable.
 I originally created this tool for organizing juggling pattern research clips, but you can use it for anything. It can
 support 100+ videos, and 2500+ clips without any known performance problems.
 
+[Here](https://dl.dropboxusercontent.com/u/141499/zclipsy-example/index.html) is an example generated site from which
+the below screenshot was taken.
+
+![Example screenshot](https://raw.githubusercontent.com/noslowerdna/zclipsy/screenshots/example.png "Example screenshot")
+
 ## Installation
 
-Only Mac OSX is currently supported for running the catalog site generator. The generated site can be accessed by any
-modern web browser on any type of device, including tablets and smartphones.
+Only Mac OSX is currently supported for running the catalog site generator, although it should not be terribly difficult
+to run the code on Linux or Windows. The generated site can be accessed by any modern web browser on any type of device,
+including tablets and smartphones.
 
-To download the files, run these commands to install [Homebrew](http://brew.sh/) and [Git](https://git-scm.com/).
+To download the files, first run these commands to install [Homebrew](http://brew.sh/) and [Git](https://git-scm.com/).
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -30,7 +36,7 @@ git clone https://github.com/noslowerdna/zclipsy.git
 Alternatively, you can [download a ZIP file](https://github.com/noslowerdna/zclipsy/archive/master.zip) of the latest
 code at and `unzip` it in the directory of your choice.
 
-To generate an example catalog, just `chmod` the `zclipsy` script to be executable and then run it.
+To generate an example catalog site, just `chmod` the `zclipsy` script to be executable and then run it.
 
 ```
 chmod u+x zclipsy
@@ -40,7 +46,7 @@ open index.html
 
 ## Configuration
 
-Three files are required to run: a configuration file, a video inventory, and a clip inventory. These files all need to
+Three input files are required: a configuration file, a video inventory, and a clip inventory. These files all need to
 reside in the same directory as the code.
 
 #### zclipsy.yaml
@@ -141,18 +147,18 @@ Besides Dropbox other Deep Web options might include [JSFiddle](https://jsfiddle
 
 #### Public Internet
 
-If you have your own website, you can just upload the files. Make sure to upload `index.html`, `style.css`, and all
+If you have your own website, you can just upload the files to it. Make sure to upload `index.html`, `style.css`, and all
 of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the content could be
-indexed by search engines. If your videos are set as unlisted to hide them on YouTube, they may become publicly
+potentially indexed by search engines. If your videos are set as unlisted to hide them on YouTube, they may become publicly
 discoverable.
 
 ## Updates
 
 The process for updating your clip catalog site is fairly straightforward.
 
-1. Upload any new video(s) to YouTube as necessary.
-2. Edit the video inventory file as necessary.
-3. Edit the clip inventory file as necessary.
+1. Upload any new video(s) to YouTube.
+2. Edit the video inventory file.
+3. Edit the clip inventory file.
 4. Run the `zclipsy` script.
 
 The site can then be viewed locally, or the generated `cliptable.js` and `index.html` files can be deployed to a web
