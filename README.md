@@ -142,15 +142,15 @@ documentation, but the gist is that it involves copying everything into a [Publi
 folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL]
 (http://tinyurl.com/) to conveniently access the site since the URL that Dropbox provides is very long and complex.
 
-Besides Dropbox other Deep Web options might include [JSFiddle](https://jsfiddle.net/) and [Google Drive]
-(https://www.google.com/drive/).
+Besides Dropbox other Deep Web options might include [JSFiddle](https://jsfiddle.net/), [Amazon
+S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html), and [Google Drive]
+(https://www.google.com/drive/) (until [August 31, 2016](https://support.google.com/drive/answer/2881970) anyway).
 
 #### Public Internet
 
-If you have your own website, you can just upload the files to it. Make sure to upload `index.html`, `style.css`, and all
-of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the content could be
-potentially indexed by search engines. If your videos are set as unlisted to hide them on YouTube, they may become publicly
-discoverable.
+If you have your own website, you can just upload the files to it. Make sure to upload `index.html` (renaming as necessary), `style.css`, and all of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the
+content could be potentially indexed by search engines. If your videos are set as unlisted to hide them on YouTube, they may
+become publicly discoverable.
 
 ## Updates
 
@@ -162,7 +162,7 @@ The process for updating your clip catalog site is fairly straightforward.
 4. Run the `zclipsy` script.
 
 The site can then be viewed locally, or the generated `cliptable.js` and `index.html` files can be deployed to a web
-server for viewing over the internet.
+server for viewing over the internet as described in the Dployment section above.
 
 To refresh the ZClipsy code itself, simply run `git pull` from the project installation directory or download the master
 branch ZIP file. You can watch the [commit history](https://github.com/noslowerdna/zclipsy/commits/master) for changes to
