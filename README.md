@@ -9,7 +9,7 @@ catalog is paginated, searchable, and sortable.
 I originally created this tool for organizing juggling pattern research clips, but you can use it for anything. It can
 support 100+ videos, and 2500+ clips without any known performance problems.
 
-[Here](https://dl.dropboxusercontent.com/u/141499/zclipsy-example/index.html) is an example generated site from which
+[Here](http://demo-zclipsy.s3-website-us-west-2.amazonaws.com/index.html) is an example generated site from which
 the below screenshot was taken.
 
 ![Example screenshot](https://raw.githubusercontent.com/noslowerdna/zclipsy/screenshots/example.png "Example screenshot")
@@ -136,15 +136,17 @@ need internet connectivity in order to play the videos that are hosted on YouTub
 
 #### Deep Web
 
-I use [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web]
+I originally used [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web]
 (https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
-documentation, but the gist is that it involves copying everything into a [Public](https://www.dropbox.com/en/help/16)
+documentation, but the gist is that it involved copying everything into a [Public](https://www.dropbox.com/en/help/16)
 folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL]
 (http://tinyurl.com/) to conveniently access the site since the URL that Dropbox provides is very long and complex.
+I switched to hosting it on [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) after
+Dropbox removed support for this functionality in October 2016.
 
-Besides Dropbox other Deep Web options might include [JSFiddle](https://jsfiddle.net/), [Amazon
-S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html), and [Google Drive]
-(https://www.google.com/drive/) (until [August 31, 2016](https://support.google.com/drive/answer/2881970) anyway).
+Besides S3 other Deep Web options might include [JSFiddle](https://jsfiddle.net/), [BitBalloon](https://bitballoon.com/),
+and [Google Drive](https://www.google.com/drive/) (until [August 31, 2016](https://support.google.com/drive/answer/2881970)
+anyway). [Github Pages](https://pages.github.com/) could also be an option.
 
 #### Public Internet
 
