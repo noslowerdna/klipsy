@@ -940,6 +940,9 @@ var events = require('events'),
     getByClass = require('get-by-class'),
     toString = require('to-string');
 
+var startDelim = "(^|\\s|\\:|\\(|\\)|\\[|\\]|,|/)";
+var endDelim =   "($|\\s|\\:|\\(|\\)|\\[|\\]|,|/)";
+
 module.exports = function(list) {
     var item,
         text,
@@ -1025,7 +1028,7 @@ module.exports = function(list) {
                 if (exact) {
                     if (token.length > 2) {
                         // Trim it off and build exact word match regex
-                        token = "(^|\\s)" + token.substring(2, token.length) + "(\\s|$)";
+                        token = startDelim + token.substring(2, token.length) + endDelim;
                     } else {
 		        exact = false;
 		    }
