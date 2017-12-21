@@ -1017,10 +1017,21 @@ module.exports = function(list) {
                     if (token.length > 2) {
                         // Trim it off
                         token = token.substring(2, token.length);
-                    } else continue;
+                    } else {
+                        continue;
+		    }
                 }
-                var foundToken = (text.search(token) > -1);
-                if (foundToken === negated) {
+                var exact = token.substring(0, 2) === "\\+";
+                if (exact) {
+                    if (token.length > 2) {
+                        // Trim it off and build exact word match regex
+                        token = "(^|\\s)" + token.substring(2, token.length) + "(\\s|$)";
+                    } else {
+		        exact = false;
+		    }
+                }
+                var found = (text.search(token) > -1);
+                if (found === negated) {
                     return false;
                 }
             }
