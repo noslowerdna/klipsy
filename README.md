@@ -111,8 +111,11 @@ you'll need to be the video owner and logged in to your YouTube account.
 
 When you enter one or more search terms separated by spaces, the clip table updates itself dynamically as each letter
 is typed, filtering out clips that do not match all of the criteria. Some minor enhancements were made to the List.js
-search syntax, in particular searching across all columns in the table and support for negation by prefixing a search
-term with a `-` (for example `-shiny`), which excludes any matching clip.
+search syntax, in particular:
+
+* Searching across all columns in the table
+* Support for negation by prefixing a search term with a `-` (for example `-shiny`), which excludes any matching clip
+* Support for exact word match by prefixing a search term with a `+` (for example `+shoe` would match "my shoe" but not "my shoes"), note that exact negation is also supported (for example `-+shoe` would exclude "my shoe" but not "my shoes")
 
 #### Sorting
 
