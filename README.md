@@ -7,7 +7,7 @@ a standalone website containing a catalog of the clips for convenient looped pla
 catalog is paginated, searchable, and sortable.
 
 I originally created this tool for organizing juggling pattern research clips, but you can use it for anything. It can
-support 100+ videos, and 2500+ clips without any known performance problems.
+support 300+ videos, and 5000+ clips without any known performance problems.
 
 [Here](http://demo-zclipsy.s3-website-us-west-2.amazonaws.com/index.html) is an example generated site from which
 the below screenshot was taken.
@@ -17,8 +17,8 @@ the below screenshot was taken.
 ## Installation
 
 Only Mac OSX is currently supported for running the catalog site generator, although it should not be terribly difficult
-to run the code on Linux or Windows. The generated site can be accessed by any modern web browser on any type of device,
-including tablets and smartphones.
+to figure out how to run the code on Linux or Windows. The generated site can be accessed by any modern web browser on any
+type of device, including tablets and smartphones.
 
 To download the files, first run these commands to install [Homebrew](http://brew.sh/) and [Git](https://git-scm.com/).
 
@@ -34,7 +34,7 @@ git clone https://github.com/noslowerdna/zclipsy.git
 ```
 
 Alternatively, you can [download a ZIP file](https://github.com/noslowerdna/zclipsy/archive/master.zip) of the latest
-code at and `unzip` it in the directory of your choice.
+code and `unzip` it in the directory of your choice.
 
 To generate an example catalog site, just `chmod` the `zclipsy` script to be executable and then run it.
 
@@ -49,9 +49,9 @@ open index.html
 Three input files are required: a configuration file, a video inventory, and a clip inventory. These files all need to
 reside in the same directory as the code.
 
-#### zclipsy.yaml
+#### Configuration file
 
-The main configuration file is named `zclipsy.yaml`. You can edit it with your favorite text editor application. The
+The configuration file is named `zclipsy.yaml`. You can edit it with your favorite text editor application. The
 following properties can be configured using standard `property: value` YAML syntax.
 
 * **videos** - Name of your video inventory file. Default: "videos.txt"
@@ -69,11 +69,10 @@ VIDEO_NAME DATE YOUTUBE_ID LENGTH
 ```
 
 * **VIDEO_NAME** - Short name for the video, for example `Res-96`. Cannot contain spaces, must be different for each video.
-* **DATE** - Video date in `MonYYYY` format, for example `Oct2015`. Tagged to each clip in the video so you can search
-for it.
+* **DATE** - Video date in `MonYYYY` format, for example `Oct2015`. This is tagged to each clip in the video so you can search
+by date.
 * **YOUTUBE_ID** - Unique YouTube video identifier, for example `Jjxg6kxJ62Y`.
-* **LENGTH** - Video length in `mm:ss` format, for example `5:34`. Currently only videos less than 1 hour in length are
-supported.
+* **LENGTH** - Video length in `mm:ss` or `hh:mm:ss` format, for example `0:45` (45 seconds), `5:34` (5 minutes, 34 seconds), `2:30:15` (2 hours, 30 minutes, 15 seconds).
 
 #### Clip inventory
 
@@ -84,9 +83,9 @@ VIDEO_NAME START_TIME DESCRIPTION
 ```
 
 * **VIDEO_NAME** - Short name of the video containing the clip as listed in the video inventory file.
-* **START_TIME** - Clip's start time in `mm:ss` format. All clips in a video must be on consecutive lines and listed
+* **START_TIME** - Clip's start time in `mm:ss` or `hh:mm:ss` format. All clips in a video must be on consecutive lines and listed
 sequentially in ascending order. Must be less than the video length as declared in the video inventory file.
-* **DESCRIPTION** - Text description of the clip. May contain spaces, a tag/label system works well.
+* **DESCRIPTION** - Text description of the clip. May contain spaces. A system that works well is for this to be a collection of tags or labels.
 
 ## How it works
 
@@ -161,13 +160,13 @@ become publicly discoverable.
 
 The process for updating your clip catalog site is fairly straightforward.
 
-1. Upload any new video(s) to YouTube.
+1. Upload any new video(s) to YouTube, noting the video id(s) that YouTube assigns to them.
 2. Edit the video inventory file.
 3. Edit the clip inventory file.
 4. Run the `zclipsy` script.
 
 The site can then be viewed locally, or the generated `cliptable.js` and `index.html` files can be deployed to a web
-server for viewing over the internet as described in the Dployment section above.
+server for viewing over the internet as described in the Deployment section above.
 
 To refresh the ZClipsy code itself, simply run `git pull` from the project installation directory or download the master
 branch ZIP file. You can watch the [commit history](https://github.com/noslowerdna/zclipsy/commits/master) for changes to
