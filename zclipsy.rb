@@ -13,11 +13,25 @@ def getDescrip(line)
 end
 
 def getSeconds(time)
-  ((time.split(':')[0]).to_i * 60) + (time.split(':')[1]).to_i
+  time_parts = time.split(':').map(&:to_i)
+  raise 'invalid video time: ' + time unless time_parts.length < 4
+  if time_parts.length < 2
+    time_parts[0]
+  elsif time_parts.length < 3
+    (time_parts[0] * 60) + time_parts[1]
+  else
+    (time_parts[0] * 3600) + (time_parts[1] * 60) + time_parts[2]
+  end
 end
 
 def getTimeString(seconds)
-  (seconds / 60).to_s + ':' + (seconds % 60).to_s.rjust(2, '0')
+  if seconds < 60
+    '0:' + seconds.to_s.rjust(2, '0')
+  elsif seconds < 3600
+    (seconds / 60).to_s + ':' + (seconds % 60).to_s.rjust(2, '0')
+  else 
+    (seconds / 3600).to_s + ':' + ((seconds % 3600) / 60).to_s.rjust(2, '0') + ':' + ((seconds % 3600)  % 60).to_s.rjust(2, '0')
+  end
 end
 
 def scaleSpeed(seconds, scale)
@@ -100,7 +114,7 @@ lines.each_with_index do |line, i|
   slowDuration = getTimeString(slowDurationSecs)
   superSlowDuration = getTimeString(superSlowDurationSecs)
   fastDuration = getTimeString(fastDurationSecs)
-  baseLink = id + '-' + startTime.sub(':', '-')
+  baseLink = id + '-' + startTime.gsub(':', '-')
   fastLink = baseLink + '-'
   slowLink = baseLink + '--'
   superSlowLink = baseLink + '---'
