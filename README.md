@@ -138,11 +138,9 @@ need internet connectivity in order to play the videos that are hosted on YouTub
 
 #### Deep Web
 
-I originally used [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web]
-(https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
+I originally used [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web](https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
 documentation, but the gist is that it involved copying everything into a [Public](https://www.dropbox.com/en/help/16)
-folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL]
-(http://tinyurl.com/) to conveniently access the site since the URL that Dropbox provides is very long and complex.
+folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL](http://tinyurl.com/) to conveniently access the site since the URL that Dropbox provides is very long and complex.
 I switched to hosting it on [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) after
 Dropbox removed support for this functionality in October 2016.
 
