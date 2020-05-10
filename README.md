@@ -72,7 +72,10 @@ VIDEO_NAME DATE YOUTUBE_ID LENGTH
 * **DATE** - Video date in `MonYYYY` format, for example `Oct2015`. This is tagged to each clip in the video so you can search
 by date.
 * **YOUTUBE_ID** - Unique YouTube video identifier, for example `Jjxg6kxJ62Y`.
-* **LENGTH** - Video length in `mm:ss` or `hh:mm:ss` format, for example `0:45` (45 seconds), `5:34` (5 minutes, 34 seconds), `2:30:15` (2 hours, 30 minutes, 15 seconds).
+* **LENGTH** - Video length in `mm:ss` or `hh:mm:ss` format, for example `0:45` (45 seconds), `5:34` (5 minutes, 34 seconds),
+`2:30:15` (2 hours, 30 minutes, 15 seconds).
+
+Additionally a fifth value can be provided to override the global speed scaling factor.
 
 #### Clip inventory
 
@@ -83,9 +86,10 @@ VIDEO_NAME START_TIME DESCRIPTION
 ```
 
 * **VIDEO_NAME** - Short name of the video containing the clip as listed in the video inventory file.
-* **START_TIME** - Clip's start time in `mm:ss` or `hh:mm:ss` format. All clips in a video must be on consecutive lines and listed
-sequentially in ascending order. Must be less than the video length as declared in the video inventory file.
-* **DESCRIPTION** - Text description of the clip. May contain spaces. A system that works well is for this to be a collection of tags or labels.
+* **START_TIME** - Clip's start time in `mm:ss` or `hh:mm:ss` format. All clips in a video must be on consecutive lines and
+listed sequentially in ascending order. Must be less than the video length as declared in the video inventory file.
+* **DESCRIPTION** - Text description of the clip. May contain spaces. A system that works well is for this to be a collection of
+tags or labels.
 
 ## How it works
 
@@ -114,7 +118,8 @@ search syntax, in particular:
 
 * Searching across all columns in the table
 * Support for negation by prefixing a search term with a `-` (for example `-shiny`), which excludes any matching clip
-* Support for exact word match by prefixing a search term with a `+` (for example `+shoe` would match "my shoe" but not "my shoes"), note that exact negation is also supported (for example `-+shoe` would exclude "my shoe" but not "my shoes")
+* Support for exact word match by prefixing a search term with a `+` (for example `+shoe` would match "my shoe" but not "my shoes"),
+note that exact negation is also supported (for example `-+shoe` would exclude "my shoe" but not "my shoes")
 
 #### Sorting
 
@@ -138,11 +143,13 @@ need internet connectivity in order to play the videos that are hosted on YouTub
 
 #### Deep Web
 
-I originally used [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a [Deep Web](https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
+I originally used [Dropbox](https://www.dropbox.com/) for hosting my personal clip catalog as a
+[Deep Web](https://en.wikipedia.org/wiki/Deep_web_(search)) site. The details for setting this up are outside the scope of this
 documentation, but the gist is that it involved copying everything into a [Public](https://www.dropbox.com/en/help/16)
-folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL](http://tinyurl.com/) to conveniently access the site since the URL that Dropbox provides is very long and complex.
-I switched to hosting it on [Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) after
-Dropbox removed support for this functionality in October 2016.
+folder. Whenever the files are updated, they are immediately synced to the Dropbox servers. I also use a [TinyURL](http://tinyurl.com/)
+to conveniently access the site since the URL that Dropbox provides is very long and complex. I switched to hosting it on
+[Amazon S3](http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html) after Dropbox removed support for this functionality
+in October 2016.
 
 Besides S3 other Deep Web options might include [JSFiddle](https://jsfiddle.net/), [BitBalloon](https://bitballoon.com/),
 and [Google Drive](https://www.google.com/drive/) (until [August 31, 2016](https://support.google.com/drive/answer/2881970)
@@ -150,7 +157,8 @@ anyway). [Github Pages](https://pages.github.com/) could also be an option.
 
 #### Public Internet
 
-If you have your own website, you can just upload the files to it. Make sure to upload `index.html` (renaming as necessary), `style.css`, and all of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the
+If you have your own website, you can just upload the files to it. Make sure to upload `index.html` (renaming as necessary),
+`style.css`, and all of the `.js` files including the generated `cliptable.js` file. Keep in mind that with this option the
 content could be potentially indexed by search engines. If your videos are set as unlisted to hide them on YouTube, they may
 become publicly discoverable.
 

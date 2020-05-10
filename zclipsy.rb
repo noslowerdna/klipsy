@@ -60,6 +60,7 @@ raise 'invalid speed: ' + SCALE_SPEED if SCALE_SPEED == 0
 dates = {}
 links = {}
 durations = {}
+scales = {}
 
 js = []
 html = []
@@ -68,11 +69,12 @@ File.open(VIDEOS_FILE) do |file|
   file.each do |line|
     next if line.strip.empty?
     parts = line.split(' ')
-    raise 'invalid video: ' + line if parts.length != 4
+    raise 'invalid video: ' + line if parts.length < 4 || parts.length > 5
 
     dates[parts[0]] = parts[1]
     links[parts[0]] = parts[2]
     durations[parts[0]] = parts[3]
+    scales[parts[0]] = (parts.length == 5) ? parts[4].to_i : SCALE_SPEED
   end
 end
 
@@ -107,9 +109,9 @@ lines.each_with_index do |line, i|
   endSecs = id == nextId ? getSeconds(getStartTime(nextLine)) : getSeconds(durations[id])
 
   durationSecs = endSecs - startSecs
-  fastDurationSecs = scaleSpeed(durationSecs, SCALE_SPEED)
-  slowDurationSecs = scaleSpeed(2 * durationSecs, SCALE_SPEED)
-  superSlowDurationSecs = scaleSpeed(4 * durationSecs, SCALE_SPEED)
+  fastDurationSecs = scaleSpeed(durationSecs, scales[id])
+  slowDurationSecs = scaleSpeed(2 * durationSecs, scales[id])
+  superSlowDurationSecs = scaleSpeed(4 * durationSecs, scales[id])
 
   slowDuration = getTimeString(slowDurationSecs)
   superSlowDuration = getTimeString(superSlowDurationSecs)
@@ -123,11 +125,11 @@ lines.each_with_index do |line, i|
     'cp = "tr' + (i + 1).to_s + '"; document.getElementById(cp).className = "p"; '
 
   js << '$(\'#' + fastLink + '\').click(function(){ ' + highlightCurrentlyPlaying + 'load(\'' + links[id] + '\',' + startSecs.to_s +
-    ',' + (startSecs + durationSecs).to_s + ',' + SCALE_SPEED.to_s + '); return false; });'
+    ',' + (startSecs + durationSecs).to_s + ',' + scales[id].to_s + '); return false; });'
   js << '$(\'#' + slowLink + '\').click(function(){ ' + highlightCurrentlyPlaying + 'load(\'' + links[id] + '\',' + startSecs.to_s +
-    ',' + (startSecs + durationSecs).to_s + ',' + (0.5 * SCALE_SPEED).to_s + '); return false; });'
+    ',' + (startSecs + durationSecs).to_s + ',' + (0.5 * scales[id]).to_s + '); return false; });'
   js << '$(\'#' + superSlowLink + '\').click(function(){ ' + highlightCurrentlyPlaying + 'load(\'' + links[id] + '\',' + startSecs.to_s +
-    ',' + (startSecs + durationSecs).to_s + ',' + (0.25 * SCALE_SPEED).to_s + '); return false; });'
+    ',' + (startSecs + durationSecs).to_s + ',' + (0.25 * scales[id]).to_s + '); return false; });'
 
   html << '<tr class="np" id="tr' + (i + 1).to_s + '">' +
     '<td class="video" title="' + id + ' (' + dates[id] + ')">' + id + '</td>' +
